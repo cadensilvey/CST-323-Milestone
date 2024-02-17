@@ -9,12 +9,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.context.annotation.RequestScope;
 
-import com.gcu.business.FiveValidLogins;
 import com.gcu.business.OrdersBusinessService;
 import com.gcu.business.OrdersBusinessServiceInterface;
-import com.gcu.business.RegistrationBusinessService;
-import com.gcu.business.RegistrationBusinessServiceInterface;
-import com.gcu.business.SecurityServiceInterface;
+
 import com.gcu.data.OrdersDataService;
 import com.gcu.data.OrdersDataAccessInterface;
 import com.gcu.model.OrderModel;
@@ -28,11 +25,7 @@ public class SpringConfig {
 		return new OrdersBusinessService();
 	}
 
-	@Bean(name="RegistrationBusinessService", initMethod = "init", destroyMethod = "destroy")
-	@Scope(value="prototype", proxyMode=ScopedProxyMode.TARGET_CLASS)
-	public RegistrationBusinessServiceInterface getRegistrationBusiness() {
-		return new RegistrationBusinessService();
-	}
+	
 
 	
 	@Autowired
@@ -44,9 +37,5 @@ public class SpringConfig {
 		return new OrdersDataService(dataSource);
 	}
 	
-	@Bean(name="securityService")
-		public SecurityServiceInterface getSecurityService() {
-			return new FiveValidLogins();
-		}
 	
 }
