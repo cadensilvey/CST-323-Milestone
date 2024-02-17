@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layouts/defaultTemplate">
+	<head>
+		
+		<style>
+			*{
+				font-family: Arial;
+			}
+			h1{
+				margin-left: 2.5%;
+				margin-right: 2.5%;
+
+			}
+			p{
+				font-style: italic;
+			}
+			table, th, td{
+				
+				border: 1px solid black;
+				border-collapse: collapse; 
+				align-items: center;
+				
+			}
+			
+		</style>
+	</head>
+	
+		
+	 
+	<body>	
+		<div layout:fragment="content">
+
+			
+			<h1 align="center">Products</h1>
+			<a th:href="@{orders/new}" class="btn btn-primary">Add</a>	
+			
+			<form action="#" th:action="@{{search}}" method="get">
+				<div class="input-group mb-3 search">
+					<input type="text" name="search" class="form-control" placeholder="Search" id="search-input">
+					<button class="btn btn-outline-secondary" type="submit">Search</button>
+				</div>
+			</form>
+			
+			
+			<p> </p>
+			<table class="table table-striped table-hover " style="background-color: #EEEEEE;">
+				<thead>
+				  <tr>
+					<th scope="col">ID</th>
+					<th scope="col">Product NO</th>
+					<th scope="col">Product Name</th>
+					<th scope="col">Price</th>
+					<th scope="col">Quantity</th>
+				  </tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<tr th:each="order : ${orders}">
+						<!-- order id  -->
+						<td th:text="${order.id}">Id</td>
+						<!-- order no -->
+						<td th:text="${order.orderNo}"></td>
+						<!-- order name -->
+						<td th:text="${order.productName}">Name</td>
+						<!-- order price -->
+						<td th:text="${order.price}">Price</td>
+						<!-- order quantity -->
+						<td th:text="${order.quantity}">Quantity</td>
+
+
+						<td>
+							<!-- create the buttons to update and delete the orders  -->
+							<a th:href="@{edit/{id}(id=${order.id})}" class="btn btn-primary">Edit</a>
+							<a th:href="@{delete/{id}(id=${order.id})}" class="btn btn-danger">Delete</a>
+
+						</td>						
+					</tr>
+				</tbody>
+			  </table>
+			
+		</body>	
+		
+	</div>	
+	
+
+
+	
+</html>
