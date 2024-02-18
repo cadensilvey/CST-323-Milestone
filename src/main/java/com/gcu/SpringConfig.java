@@ -25,9 +25,6 @@ public class SpringConfig {
 		return new OrdersBusinessService();
 	}
 
-	
-
-	
 	@Autowired
 	private DataSource dataSource;
 	
@@ -36,6 +33,5 @@ public class SpringConfig {
 	public OrdersDataAccessInterface<OrderModel> getDataService(){
 		return new OrdersDataService(dataSource);
 	}
-	
 	
 }

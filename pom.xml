@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gcu</groupId>
-	<artifactId>CST-339-Milestone</artifactId>
+	<artifactId>CST-323-Milestone</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>CST-339-Milestone</name>
+	<name>CST-323-Milestone</name>
 	<description>Data Entry Application</description>
 	<properties>
 		<java.version>17</java.version>

@@ -26,23 +26,6 @@ public class OrdersController {
 		super();
 		this.ordersDAO = s;
 	}
-	
-	// @GetMapping("/")
-	// public List<OrderModel> showAllOrders(Model model) {
-	// 	return ordersService.getOrders();
-	// }
-	
-	// @GetMapping("/{id}")
-	// public OrderModel getOne(@PathVariable(name="id") int id) {
-	// 	return ordersService.getById(id);
-	// }
-	
-	// @GetMapping("/search/{searchterm}")
-	// public List<OrderModel> searchOrders(@PathVariable(name="searchterm") String searchterm){
-	// 	return ordersService.searchOrders(searchterm);
-	// }
-	
-	/// start of milestone 3
 
 	@GetMapping("/")
 	public String index(Model model){
@@ -62,30 +45,7 @@ public class OrdersController {
 		
 		return "orders";
 	}
-
-	/** 
-	// Search for specific order
-	@GetMapping("/filter")
-	public String searchOrders(Model model){
-		model.addAttribute("SearchTerm", new SearchModel());
-		return "filter";
-	}
-
-	@PostMapping("/processFilter")
-	public String processEdit(String s, Model model){
-		List<OrderModel> filteredList = new ArrayList<OrderModel>();
-		
-		for(OrderModel o: orders){
-			if(o.getProductName().contains(s)){
-				filteredList.add(o);
-			}
-		}
-		
-		model.addAttribute("orders",filteredList);
-		return "filteredOrders";
-	}
-	**/
-
+	
 	// new order 
 	@GetMapping("/new")
 	public String newOrder(Model model){
@@ -114,13 +74,6 @@ public class OrdersController {
 		return "redirect:/orders/";
 	}
 
-	
-	// @GetMapping("/search/{searchterm}")
-	// public List<OrderModel> searchOrders(@PathVariable(name="searchterm") String searchterm){
-	// 	return ordersService.searchOrders(searchterm);
-	// }
-	
-
 	// delete 
 	@GetMapping("/delete/{id}")
 	public String deleteOrder(@PathVariable(value = "id")Integer id, Model model){
@@ -128,23 +81,4 @@ public class OrdersController {
 		return "redirect:/orders/";
 
 	}
-
-
-	// end of milestone 3
-
-	// @PostMapping("/")
-	// public OrderModel addOrder(@RequestBody OrderModel addOrder) {
-	// 	ordersService.addOne(addOrder);
-	// 	return addOrder;
-	// }
-	
-	// @DeleteMapping("/{id}")
-	// public boolean deleteOrder(@PathVariable(name="id") int id) {
-	// 	return ordersService.deleteOne(id);
-	// }
-	
-	// @PutMapping("/edit/{id}")
-	// public OrderModel updateOrder(@RequestBody OrderModel updateOrder) {
-	// 	return ordersService.updateOne(updateOrder.getId(), updateOrder);
-	// }
 }
