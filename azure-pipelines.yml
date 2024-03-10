@@ -1,0 +1,50 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  displayName: 'Build stage'
+  jobs:
+  - job: Build
+    displayName: 'Build Maven Project'
+    workspace:
+      clean: all  # Ensure a clean build by cleaning workspace
+    steps:
+    - task: Maven@3
+      displayName: 'Maven Package'
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'package -DskipTests=true'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
+      inputs:
+        PathtoPublish: '$(System.DefaultWorkingDirectory)/target'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+- stage: Deploy
+  displayName: 'Deploy to Azure'
+  jobs:
+  - job: Deploy
+    displayName: 'Deploy to Azure App Service'
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET Core SDK'
+      inputs:
+        packageType: 'sdk'
+        version: '3.x'
+
+    - task: AzureWebApp@1
+      displayName: 'Azure Web App Deploy'
+      inputs:
+        azureSubscription: '2b570b6c-ec0b-4ac9-9399-1b7999df1fd4'
+        appName: 'Milestone-3'
+        package: '$(System.DefaultWorkingDirectory)/drop/*.jar'
+        deploymentMethod: 'auto'
+        enableCustomDeployment: true
