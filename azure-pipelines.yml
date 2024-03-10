@@ -10,13 +10,14 @@ stages:
   jobs:
   - job: Build
     displayName: 'Build Maven Project'
+    workspace:
+      clean: all  # Ensure a clean build by cleaning workspace
     steps:
     - task: Maven@3
       displayName: 'Maven Package'
       inputs:
         mavenPomFile: 'pom.xml'
         goals: 'package -DskipTests=true'
-      workingDirectory: $(System.DefaultWorkingDirectory)
 
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact'
