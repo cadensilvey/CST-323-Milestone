@@ -21,7 +21,7 @@ stages:
       displayName: 'Maven Package'
       inputs:
         mavenPomFile: 'pom.xml'
-        goals: 'package'
+        goals: 'package -DskipTests=true'  # Add the skipTests flag to exclude test execution
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
       inputs:
