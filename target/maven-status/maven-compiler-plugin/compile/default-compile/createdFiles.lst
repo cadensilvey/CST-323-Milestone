@@ -1,3 +1,4 @@
+com/gcu/CST323Milestone.class
 com/gcu/model/OrderModel.class
 com/gcu/business/OrdersBusinessServiceInterface.class
 com/gcu/business/OrdersBusinessService.class
