@@ -27,7 +27,7 @@ public class OrdersController {
 		this.ordersDAO = s;
 	}
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String index(Model model){
 		// List<OrderModel> orders = ordersService.getOrders();
 		List<OrderModel> orders = ordersDAO.getOrders();
