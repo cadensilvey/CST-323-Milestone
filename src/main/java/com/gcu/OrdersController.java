@@ -27,7 +27,7 @@ public class OrdersController {
 		this.ordersDAO = s;
 	}
 
-	// testing the pipeline
+	// testing the 
 
 	@GetMapping("/")
 	public String index(Model model){
