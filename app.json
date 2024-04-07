@@ -1,0 +1,22 @@
+{
+    "name": "CST-323-Milestone",
+    "description": "Milestone for CST-323 - Caden and Logan",
+    "keywords": ["keyword1", "keyword2"],
+    "formation": {
+      "web": {
+        "quantity": 1,
+        "size": "Free"
+      }
+    },
+    "addons": [
+      {
+        "plan": "jawsdb:kitefin"
+      }
+    ],
+    "buildpacks": [
+      {
+        "url": "heroku/java"
+      }
+    ]
+  }
+  
